@@ -9,13 +9,15 @@ class MyComponent extends React.Component {
     };
 
     handleClick(event) {
-        let age2 = this.state.age;
-        console.log(`My Name is ${this.state.name} and i'm ${age2}`);
+        console.log(`My Name is ${this.state.name} and i'm ${this.state.age}`);
 
         this.setState({
             name: 'Phan Trường',
-            age: Math.floor((Math.random() * 100) + 1)
-        });
+            age: this.state.age + 2
+        },
+            () => {
+                console.log(`Now i'm ${this.state.age}`);
+            });
     };
 
     handleMouseOver = (event) => {
