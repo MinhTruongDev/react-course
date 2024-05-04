@@ -16,7 +16,7 @@ class DisplayInfo extends React.Component {
         return (
             <div>
                 <div>
-                    <span onClick={() => { this.handleShowHide() }}> {this.state.isShow ? "Hide" : "Show"}  list user:</span>
+                    <span onClick={() => { this.handleShowHide() }}> {this.state.isShow ? "Hide" : "Show"} list user:</span>
                 </div>
                 {this.state.isShow &&
                     <div>
