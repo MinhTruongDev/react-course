@@ -4,9 +4,33 @@ import logo from './../logo.svg'
 
 class DisplayInfo extends React.Component {
 
-    state = {
-        isShow: true
-    };
+    constructor(props) {
+        console.log('>> Constructor');
+        super(props);
+        this.state = {
+            isShow: true
+        }
+    }
+
+    componentDidMount() {
+        console.log('> Mount');
+        setTimeout(() => {
+            document.title = 'Bruh';
+        }, 3000);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('>>> Did Update:', prevProps, prevState, snapshot);
+        if (this.props.listUser !== prevProps.listUser) {
+            if (this.props.listUser.length === 5) {
+                alert('Enough!!!');
+            }
+            if (this.props.listUser.length === 0) {
+                alert('Add some more!!!');
+            }
+        }
+    }
+
     handleShowHide = () => {
         this.setState({
             isShow: !this.state.isShow
@@ -14,6 +38,7 @@ class DisplayInfo extends React.Component {
     }
 
     render() {
+        console.log('>>> Render');
         const { listUser } = this.props;
         return (
             <div className='display-info-container'>
