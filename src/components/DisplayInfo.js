@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './DisplayInfo.scss';
 
 const DisplayInfo = (props) => {
@@ -7,6 +7,33 @@ const DisplayInfo = (props) => {
     const handleShowHideListUser = () => {
         setShowHideListUser(!isShowHideListUser);
     }
+    console.log('>>> render')
+
+    useEffect(
+        () => {
+            if (listUser.length === 0) {
+                alert(`There's no user left`);
+            }
+            console.log('>>>> Alert')
+        }, [listUser]
+    );
+
+    useEffect(
+        () => {
+            setTimeout(() => {
+                document.title = 'Bruh';
+            }, 3000);
+            console.log('>>>> Bruh')
+        }, []
+    );
+
+    useEffect(
+        () => {
+            setTimeout(() => {
+                document.title += 'Bruh';
+            }, 3000);
+            console.log('>>>> More Bruh')
+        });
 
     return (
         <div className='display-info-container'>
