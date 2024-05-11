@@ -2,6 +2,43 @@ import React, { useState } from "react";
 import AddUserInfo from "./AddUserInfo";
 import DisplayInfo from "./DisplayInfo";
 
+const MyComponent = (props) => {
+
+    const [listUser, setListUser] = useState(
+        [
+            { id: 1, name: "Phan Truong", age: 25 },
+            { id: 2, name: "Phan Truong 2", age: 26 },
+            { id: 3, name: "Phan Truong 3", age: 35 },
+        ]
+    );
+
+    const handleAddNewUser = (user) => {
+        setListUser([user, ...listUser]);
+    }
+
+    const handleDeleteUser = (userId) => {
+        let listUserClone = [...listUser];
+        listUserClone = listUserClone.filter(item => item.id !== userId);
+        setListUser([...listUserClone]);
+    }
+
+    return (
+        <>
+            <div className="a">
+                <AddUserInfo
+                    handleAddNewUser={handleAddNewUser} />
+                <br /><br />
+                <DisplayInfo
+                    listUser={listUser}
+                    handleDeleteUser={handleDeleteUser} />
+            </div>
+            <div className="b">Test Footer</div>
+        </>
+    );
+}
+
+export default MyComponent;
+
 // class MyComponent extends React.Component {
 //     state = {
 //         listUser: [
@@ -43,38 +80,3 @@ import DisplayInfo from "./DisplayInfo";
 //         );
 //     }
 // }
-
-const MyComponent = (props) => {
-    const [listUser, setListUser] = useState([
-        { id: 1, name: "Phan Truong", age: 25 },
-        { id: 2, name: "Phan Truong 2", age: 26 },
-        { id: 3, name: "Phan Truong 3", age: 35 },
-    ]);
-
-
-    const handleAddNewUser = (user) => {
-        setListUser([user, ...listUser]);
-    }
-
-    const handleDeleteUser = (userId) => {
-        let listUserClone = [...listUser];
-        listUserClone = listUserClone.filter(item => item.id !== userId);
-        setListUser([...listUserClone]);
-    }
-
-    return (
-        <>
-            <div className="a">
-                <AddUserInfo
-                    handleAddNewUser={handleAddNewUser} />
-                <br /><br />
-                <DisplayInfo
-                    listUser={listUser}
-                    handleDeleteUser={handleDeleteUser} />
-            </div>
-            <div className="b">Test Footer</div>
-        </>
-    );
-}
-
-export default MyComponent;

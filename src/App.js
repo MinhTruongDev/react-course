@@ -5,17 +5,6 @@ import { increaseCounter, decreaseCounter } from './redux/action/counterAction';
 import MyComponent from './components/MyComponent';
 import React from 'react';
 
-// class App extends React.Component {
-//   // JSX
-//   render() {
-//     return (
-//       <div>
-//         Hello &amp; Trường
-//         <MyComponent />
-//       </div>
-//     );
-//   };
-// }
 
 const App = () => {
   return (
@@ -27,3 +16,15 @@ const App = () => {
 }
 
 export default App;
+
+// class App extends React.Component {
+//   // JSX
+//   render() {
+//     return (
+//       <div>
+//         Hello &amp; Trường
+//         <MyComponent />
+//       </div>
+//     );
+//   };
+// }
