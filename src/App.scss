@@ -10,10 +10,36 @@ body {
 
 .app-container {
   .header-container {
-    background-color: #f6f6f3;
+
+    .btn-login {
+      border-radius   : 7px;
+      margin-right    : 15px;
+      padding         : 0 15px;
+      border          : 1px solid #535353;
+      background-color: rgba(0, 0, 0, 0);
+      height          : 40px;
+
+      &:hover {
+        background-color: wheat;
+      }
+    }
+
+    .btn-signup {
+      border-radius   : 7px;
+      padding         : 0 15px;
+      border          : 1px solid #535353;
+      color           : white;
+      background-color: #303030;
+      height          : 40px;
+
+      &:hover {
+        background-color: black;
+      }
+    }
 
     .navbar {
-      z-index: 1;
+      z-index         : 10;
+      background-color: rgba(0, 0, 0, 0) !important;
     }
 
     .navbar-nav {
@@ -24,10 +50,55 @@ body {
       }
     }
   }
+
+  .homepage-content {
+    position      : relative;
+    padding       : 0 200px;
+    margin-top    : 130px;
+    width         : 50%;
+    display       : flex;
+    flex-direction: column;
+    gap           : 30px;
+
+    .homepage-slogan {
+      font-size  : 70px;
+      font-weight: 600;
+    }
+
+    .homepage-message {
+      font-size  : 20px;
+      font-weight: 450;
+    }
+
+    .homepage-getstarted {
+      button {
+        border-radius   : 7px;
+        padding         : 0 25px;
+        border          : 1px solid #535353;
+        color           : white;
+        background-color: #303030;
+        height          : 60px;
+        font-size       : 20px;
+        font-weight     : 600;
+      }
+    }
+  }
 }
 
 video {
   position: fixed;
   bottom  : 0;
   width   : 100vw;
+}
+
+@media (min-width: 1400px) {
+
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 1800px !important;
+  }
 }
