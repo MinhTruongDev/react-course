@@ -12,6 +12,10 @@ body {
   .header-container {
     background-color: #f6f6f3;
 
+    .navbar {
+      z-index: 1;
+    }
+
     .navbar-nav {
       .nav-link {
         &.active {
@@ -20,4 +24,10 @@ body {
       }
     }
   }
+}
+
+video {
+  position: fixed;
+  bottom  : 0;
+  width   : 100vw;
 }
