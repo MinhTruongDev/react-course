@@ -1,4 +1,3 @@
-import { Alert } from 'bootstrap';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -61,6 +60,7 @@ const ModalCreateUser = (props) => {
 
         let res = await axios.post('http://localhost:8081/api/v1/participant', data);
         console.log(">>> check res: ", res);
+        handleClose();
     }
 
     return (
