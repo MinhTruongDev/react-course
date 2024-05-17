@@ -1,3 +1,24 @@
+.manage-users-container {
+    padding: 10px;
+
+    .title {
+        font-weight: 600;
+        font-size  : 20px;
+
+    }
+
+    .users-content {
+        .btn-add-new {
+            button {
+                margin: 15px 0
+            }
+
+        }
+
+        .table-users-container {}
+    }
+}
+
 .modal-add-user {
     .img-preview {
         height         : 150px;
