@@ -75,7 +75,7 @@ const ModalCreateUser = (props) => {
             username,
             role,
             image);
-        console.log('component response', data);
+
         if (data && data.EC === 0) {
             toast.success(data.EM);
             handleClose();
