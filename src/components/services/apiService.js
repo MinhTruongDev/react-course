@@ -12,7 +12,7 @@ const postCreateNewUser = (email, password, username, role, image) => {
     return axios.post('api/v1/participant', data);
 }
 
-const postUpdateNewUser = (id, username, role, image) => {
+const putUpdateUser = (id, username, role, image) => {
 
     const data = new FormData();
     data.append('id', id);
@@ -29,6 +29,6 @@ const getAllUsers = () => {
 
 export {
     postCreateNewUser,
-    postUpdateNewUser,
+    putUpdateUser,
     getAllUsers
 }
