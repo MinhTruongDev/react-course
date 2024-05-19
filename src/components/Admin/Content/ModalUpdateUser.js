@@ -3,11 +3,17 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FcPlus } from "react-icons/fc";
 import { toast } from 'react-toastify';
-import { postUpdateNewUser } from '../../services/apiService';
+import { putUpdateUser } from '../../services/apiService';
 import _ from 'lodash';
 
 const ModalUpdateUser = (props) => {
-    const { show, setShow, dataUpdate, fetchListUsers } = props;
+    const {
+        show,
+        setShow,
+        dataUpdate,
+        fetchListUsers,
+        resetUpdateData
+    } = props;
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -36,31 +42,24 @@ const ModalUpdateUser = (props) => {
         setPreviewImage("");
         setImage("");
         setShow(false);
+        resetUpdateData();
     };
 
     const handleUploadImage = (event) => {
         const ext = ['.jpg', '.jpeg', '.bmp', '.gif', '.png', '.svg'];
         if (!ext.some(el => event.target.files[0].name.endsWith(el))) {
-            setPreviewImage("")
+            setPreviewImage("");
             setImage("");
         } else {
             console.log(event.target.files[0]);
-            setPreviewImage(URL.UpdateObjectURL(event.target.files[0]));
+            setPreviewImage(URL.createObjectURL(event.target.files[0]));
             setImage(event.target.files[0]);
         }
     }
 
-    const validateEmail = (email) => {
-        return String(email)
-            .toLowerCase()
-            .match(
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            );
-    };
-
     const handleSubmitUpdateUser = async () => {
         // call api
-        let data = await postUpdateNewUser(
+        let data = await putUpdateUser(
             dataUpdate.id,
             username,
             role,
