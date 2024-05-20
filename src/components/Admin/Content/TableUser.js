@@ -1,3 +1,4 @@
+import _ from 'lodash';
 const TableUser = (props) => {
 
     const { listUser } = props;
@@ -22,9 +23,12 @@ const TableUser = (props) => {
                                     <th scope="row">{user.id}</th>
                                     <td>{user.username}</td>
                                     <td>{user.email}</td>
-                                    <td>{user.role}</td>
+                                    <td>{_.isEmpty(user.role) ? "USER" : user.role}</td>
                                     <td>
-                                        <button className="btn btn-secondary">
+                                        <button
+                                            className="btn btn-secondary"
+                                            onClick={() => props.handleClickBtnView(user)}
+                                        >
                                             View
                                         </button>
                                         <button

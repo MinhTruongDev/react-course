@@ -12,10 +12,7 @@
             button {
                 margin: 15px 0
             }
-
         }
-
-        .table-users-container {}
     }
 }
 
@@ -48,6 +45,47 @@
 
         &:hover {
             background: rgb(193, 193, 193);
+        }
+    }
+}
+
+.modal-view-user {
+    .img-preview {
+        height         : 150px;
+        width          : auto;
+        border         : 1px dashed black;
+        border-radius  : 5px;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        color          : #ccc;
+
+        img {
+            max-width : 100%;
+            max-height: 100%;
+        }
+    }
+
+    .user-info {
+        display       : flex;
+        flex-direction: column;
+    }
+
+    .user-info-row {
+        display      : flex;
+        align-items  : center;
+        margin-bottom: 10px;
+
+        .view-user-label {
+            font-size  : 25px;
+            font-weight: 600;
+            width      : 200px;
+            white-space: nowrap;
+        }
+
+        .view-user-label-data {
+            font-size: 25px;
+            flex-grow: 1;
         }
     }
 }

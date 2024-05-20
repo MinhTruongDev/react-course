@@ -6,13 +6,16 @@ import { getAllUsers } from "../../services/apiService";
 import TableUser from "./TableUser";
 import ModalCreateUser from "./ModalCreateUser";
 import ModalUpdateUser from "./ModalUpdateUser";
+import ModalViewUser from "./ModalViewUser";
 
 const ManageUser = (props) => {
 
     const [listUser, setListUser] = useState([]);
     const [showModalCreateUser, setShowModalCreateUser] = useState(false);
     const [showModalUpdateUser, setShowModalUpdateUser] = useState(false);
-    const [dataUpdate, setDataUpdate] = useState({});
+    const [showModalViewUser, setShowModalViewUser] = useState(false);
+    const [userData, setUserData] = useState({});
+
 
     useEffect(() => {
         fetchListUsers();
@@ -28,12 +31,16 @@ const ManageUser = (props) => {
     const handleClickBtnUpdate = (user) => {
         console.log('>>>>>>>>>>>>>>>>>>CHECK USER: ', user);
         setShowModalUpdateUser(!showModalUpdateUser);
-        setDataUpdate(user);
-
+        setUserData(user);
+    }
+    const handleClickBtnView = (user) => {
+        console.log('>>>>>>>>>>>>>>>>>>CHECK USER VIEW: ', user);
+        setShowModalViewUser(!showModalViewUser);
+        setUserData(user);
     }
 
     const resetUpdateData = () => {
-        setDataUpdate({});
+        setUserData({});
     }
 
     return (
@@ -54,6 +61,7 @@ const ManageUser = (props) => {
                     <TableUser
                         listUser={listUser}
                         handleClickBtnUpdate={handleClickBtnUpdate}
+                        handleClickBtnView={handleClickBtnView}
                     />
                 </div>
                 <ModalCreateUser
@@ -64,8 +72,14 @@ const ManageUser = (props) => {
                 <ModalUpdateUser
                     show={showModalUpdateUser}
                     setShow={setShowModalUpdateUser}
-                    dataUpdate={dataUpdate}
+                    dataUpdate={userData}
                     fetchListUsers={fetchListUsers}
+                    resetUpdateData={resetUpdateData}
+                />
+                <ModalViewUser
+                    show={showModalViewUser}
+                    setShow={setShowModalViewUser}
+                    dataView={userData}
                     resetUpdateData={resetUpdateData}
                 />
             </div>
