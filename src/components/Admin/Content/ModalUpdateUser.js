@@ -12,7 +12,7 @@ const ModalUpdateUser = (props) => {
         setShow,
         dataUpdate,
         fetchListUsers,
-        resetUpdateData
+        resetUserData
     } = props;
 
     const [email, setEmail] = useState("");
@@ -42,7 +42,7 @@ const ModalUpdateUser = (props) => {
         setPreviewImage("");
         setImage("");
         setShow(false);
-        resetUpdateData();
+        resetUserData();
     };
 
     const handleUploadImage = (event) => {
@@ -74,7 +74,7 @@ const ModalUpdateUser = (props) => {
         }
     }
 
-    console.log('>>>Before render: ', dataUpdate);
+    console.log('>>>Before render update: ', dataUpdate);
 
     return (
         <>

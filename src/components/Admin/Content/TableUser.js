@@ -1,7 +1,12 @@
 import _ from 'lodash';
 const TableUser = (props) => {
 
-    const { listUser } = props;
+    const {
+        listUser,
+        handleClickBtnView,
+        handleClickBtnUpdate,
+        handleClickBtnDelete
+    } = props;
 
     return (
         <>
@@ -27,17 +32,19 @@ const TableUser = (props) => {
                                     <td>
                                         <button
                                             className="btn btn-secondary"
-                                            onClick={() => props.handleClickBtnView(user)}
+                                            onClick={() => handleClickBtnView(user)}
                                         >
                                             View
                                         </button>
                                         <button
                                             className="btn btn-warning mx-3"
-                                            onClick={() => props.handleClickBtnUpdate(user)}
+                                            onClick={() => handleClickBtnUpdate(user)}
                                         >
                                             Update
                                         </button>
-                                        <button className="btn btn-danger">
+                                        <button className="btn btn-danger"
+                                            onClick={() => handleClickBtnDelete(user)}
+                                        >
                                             Delete
                                         </button>
                                     </td>

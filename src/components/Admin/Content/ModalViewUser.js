@@ -8,7 +8,7 @@ const ModalViewUser = (props) => {
         show,
         setShow,
         dataView,
-        resetUpdateData
+        resetUserData
     } = props;
 
     const [email, setEmail] = useState("");
@@ -34,10 +34,10 @@ const ModalViewUser = (props) => {
         setRole("USER");
         setPreviewImage("");
         setShow(false);
-        resetUpdateData();
+        resetUserData();
     };
 
-    console.log('>>>Before render: ', dataView);
+    console.log('>>>Before render view: ', dataView);
 
     return (
         <>
@@ -52,24 +52,24 @@ const ModalViewUser = (props) => {
                     <Modal.Title>View user</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <form class="row g-3">
-                        <div class="col-md-4">
-                            <div class="img-preview">
+                    <form className="row g-3">
+                        <div className="col-md-4">
+                            <div className="img-preview">
                                 {previewImage ? <img src={previewImage} alt="Preview" /> : <span>Preview Image</span>}
                             </div>
                         </div>
-                        <div class="col-md-8 user-info">
-                            <div class="user-info-row">
-                                <label class="form-label view-user-label">User name:</label>
-                                <label class="form-label view-user-label-data">{username}</label>
+                        <div className="col-md-8 user-info">
+                            <div className="user-info-row">
+                                <label className="form-label view-user-label">User name:</label>
+                                <label className="form-label view-user-label-data">{username}</label>
                             </div>
-                            <div class="user-info-row">
-                                <label class="form-label view-user-label">Role:</label>
-                                <label class="form-label view-user-label-data">{_.isEmpty(role) ? "USER" : role}</label>
+                            <div className="user-info-row">
+                                <label className="form-label view-user-label">Role:</label>
+                                <label className="form-label view-user-label-data">{_.isEmpty(role) ? "USER" : role}</label>
                             </div>
-                            <div class="user-info-row">
-                                <label class="form-label view-user-label">Email:</label>
-                                <label class="form-label view-user-label-data">{email}</label>
+                            <div className="user-info-row">
+                                <label className="form-label view-user-label">Email:</label>
+                                <label className="form-label view-user-label-data">{email}</label>
                             </div>
                         </div>
                     </form>
