@@ -23,6 +23,16 @@ const putUpdateUser = (id, username, role, image) => {
     return axios.put('api/v1/participant', data);
 }
 
+const deleteUser = (userId) => {
+    console.log(userId);
+    return axios.delete(
+        'api/v1/participant',
+        {
+            data:
+                { id: userId }
+        });
+}
+
 const getAllUsers = () => {
     return axios.get('api/v1/participant/all');
 }
@@ -30,5 +40,6 @@ const getAllUsers = () => {
 export {
     postCreateNewUser,
     putUpdateUser,
+    deleteUser,
     getAllUsers
 }
