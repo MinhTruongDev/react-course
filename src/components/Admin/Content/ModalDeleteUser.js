@@ -8,7 +8,7 @@ const ModalDeleteUser = (props) => {
         show,
         setShow,
         dataDelete,
-        fetchListUsers
+        fetchListUsersWithPaginate
     } = props;
 
     const handleClose = () => {
@@ -21,7 +21,7 @@ const ModalDeleteUser = (props) => {
         if (data && data.EC === 0) {
             toast.success(data.EM);
             handleClose();
-            await fetchListUsers();
+            await fetchListUsersWithPaginate(1);
         } else {
             toast.error(data.EM);
         }

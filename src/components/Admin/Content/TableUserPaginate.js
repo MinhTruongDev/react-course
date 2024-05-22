@@ -15,7 +15,7 @@ const TableUserPaginate = (props) => {
 
 
     const handlePageClick = (event) => {
-        console.log(`User requested page number ${event.selected}`);
+        console.log(`User requested page number ${event.selected + 1}`);
         fetchListUsersWithPaginate(+event.selected + 1);
     };
 
@@ -74,12 +74,12 @@ const TableUserPaginate = (props) => {
             </table>
             <div className="user-pagination">
                 <ReactPaginate
-                    nextLabel="next >"
+                    nextLabel="Next >"
                     onPageChange={handlePageClick}
                     pageRangeDisplayed={3}
                     marginPagesDisplayed={2}
                     pageCount={pageCount}
-                    previousLabel="< previous"
+                    previousLabel="< Previous"
                     pageClassName="page-item"
                     pageLinkClassName="page-link"
                     previousClassName="page-item"

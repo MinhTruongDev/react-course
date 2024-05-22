@@ -11,7 +11,7 @@ const ModalUpdateUser = (props) => {
         show,
         setShow,
         dataUpdate,
-        fetchListUsers,
+        fetchListUsersWithPaginate,
         resetUserData
     } = props;
 
@@ -68,7 +68,7 @@ const ModalUpdateUser = (props) => {
         if (data && data.EC === 0) {
             toast.success(data.EM);
             handleClose();
-            await fetchListUsers();
+            await fetchListUsersWithPaginate(1);
         } else {
             toast.error(data.EM);
         }
