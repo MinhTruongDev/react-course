@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import _ from 'lodash';
 
@@ -7,6 +6,8 @@ const TableUserPaginate = (props) => {
     const {
         listUser,
         pageCount,
+        currentPage,
+        setCurrentPage,
         handleClickBtnView,
         handleClickBtnUpdate,
         handleClickBtnDelete,
@@ -15,7 +16,7 @@ const TableUserPaginate = (props) => {
 
 
     const handlePageClick = (event) => {
-        console.log(`User requested page number ${event.selected + 1}`);
+        setCurrentPage(+event.selected + 1);
         fetchListUsersWithPaginate(+event.selected + 1);
     };
 
@@ -92,6 +93,11 @@ const TableUserPaginate = (props) => {
                     containerClassName="pagination"
                     activeClassName="active"
                     renderOnZeroPageCount={null}
+                    forcePage={
+                        currentPage - 1 >= 0
+                            ? currentPage - 1
+                            : 0
+                    }
                 />
             </div>
         </>

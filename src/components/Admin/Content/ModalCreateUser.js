@@ -9,6 +9,7 @@ const ModalCreateUser = (props) => {
     const {
         show,
         setShow,
+        setCurrentPage,
         fetchListUsersWithPaginate
     } = props;
 
@@ -74,6 +75,7 @@ const ModalCreateUser = (props) => {
         if (data && data.EC === 0) {
             toast.success(data.EM);
             handleClose();
+            setCurrentPage(1);
             await fetchListUsersWithPaginate(1);
         } else {
             toast.error(data.EM);
