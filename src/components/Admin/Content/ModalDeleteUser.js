@@ -26,7 +26,6 @@ const ModalDeleteUser = (props) => {
             toast.error(data.EM);
         }
     }
-    console.log('>>>Before render delete: ', dataDelete);
 
     return (
         <>

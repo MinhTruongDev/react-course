@@ -74,8 +74,6 @@ const ModalUpdateUser = (props) => {
         }
     }
 
-    console.log('>>>Before render update: ', dataUpdate);
-
     return (
         <>
             <Modal
