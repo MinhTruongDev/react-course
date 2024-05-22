@@ -101,7 +101,6 @@ const ManageUser = (props) => {
                     dataUpdate={userData}
                     pageCount={pageCount}
                     currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
                     fetchListUsersWithPaginate={fetchListUsersWithPaginate}
                     resetUserData={resetUserData}
                 />
@@ -117,7 +116,6 @@ const ManageUser = (props) => {
                     dataDelete={userData}
                     pageCount={pageCount}
                     currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
                     fetchListUsersWithPaginate={fetchListUsersWithPaginate}
                     resetUserData={resetUserData}
                 />
