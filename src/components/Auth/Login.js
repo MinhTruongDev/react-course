@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
 import { postLogin } from '../services/apiService';
 import './Login.scss'
@@ -10,6 +11,11 @@ const Login = (props) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [isShowPassword, setIsShowPassword] = useState(false);
+
+    const handleTogglePasword = () => {
+        setIsShowPassword(!isShowPassword);
+    }
 
     const handleLogin = async () => {
         // validate
@@ -25,13 +31,17 @@ const Login = (props) => {
         }
     }
 
+    const handleRegister = () => {
+        navigate('/register');
+    }
+
     return (
         <div className="login-container">
             <div className='header'>
                 <span>Don't have an account yet?</span>
                 <button
                     className='btn-submit'
-                    onClick={() => handleLogin()}
+                    onClick={() => handleRegister()}
                 >
                     Sign up
                 </button>
@@ -51,13 +61,22 @@ const Login = (props) => {
                         value={email}
                         onChange={(event) => setEmail(event.target.value)} />
                 </div>
-                <div className='form-group'>
+                <div className="form-group">
                     <label>Password</label>
-                    <input
-                        type={"password"}
-                        className='form-control'
-                        value={password}
-                        onChange={(event) => setPassword(event.target.value)} />
+                    <div className='password-control-wrapper'>
+                        <input
+                            className="form-control password-form"
+                            type={isShowPassword ? "text" : "password"}
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
+                        />
+                        <span
+                            className="password-icon"
+                            onClick={() => handleTogglePasword()}
+                        >
+                            {isShowPassword ? <IoMdEyeOff size={"1.5em"} /> : <IoMdEye size={"1.5em"} />}
+                        </span>
+                    </div>
                 </div>
                 <span className='forgor-password'>Forgor password?</span>
                 <div>
