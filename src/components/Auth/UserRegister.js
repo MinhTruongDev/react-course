@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { toast } from 'react-toastify';
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import './UserRegister.scss';
 import { postUserRegister } from '../services/apiService';
 
@@ -105,7 +105,9 @@ const UserRegister = (props) => {
                                 className="password-icon"
                                 onClick={() => handleTogglePasword()}
                             >
-                                {isShowPassword ? <IoMdEyeOff size={"1.5em"} /> : <IoMdEye size={"1.5em"} />}
+                                {isShowPassword
+                                    ? <IoMdEyeOff size={"1.5em"} />
+                                    : <IoMdEye size={"1.5em"} />}
                             </span>
                         </div>
                     </div>
@@ -122,7 +124,9 @@ const UserRegister = (props) => {
                                 className="password-icon"
                                 onClick={() => handleTogglePaswordConf()}
                             >
-                                {isShowConfPassword ? <IoMdEyeOff size={"1.5em"} /> : <IoMdEye size={"1.5em"} />}
+                                {isShowConfPassword
+                                    ? <IoMdEyeOff size={"1.5em"} />
+                                    : <IoMdEye size={"1.5em"} />}
                             </span>
                         </div>
                     </div>
