@@ -24,7 +24,7 @@ const ModalUpdateUser = (props) => {
     const [previewImage, setPreviewImage] = useState("");
 
     useEffect(() => {
-        console.log('>>>>Use Effect');
+        // console.log('>>>>Use Effect');
         if (!_.isEmpty(dataUpdate)) {
             setEmail(dataUpdate.email);
             setUserName(dataUpdate.username);
@@ -52,7 +52,7 @@ const ModalUpdateUser = (props) => {
             setPreviewImage("");
             setImage("");
         } else {
-            console.log(event.target.files[0]);
+            // console.log(event.target.files[0]);
             setPreviewImage(URL.createObjectURL(event.target.files[0]));
             setImage(event.target.files[0]);
         }
@@ -141,7 +141,7 @@ const ModalUpdateUser = (props) => {
                             />
                             <div className='col-md-12 img-preview'>
                                 {previewImage
-                                    ? <img src={previewImage} />
+                                    ? <img src={previewImage} alt={"preview"} />
                                     : <span>Preview Image</span>
                                 }
                             </div>

@@ -1,4 +1,3 @@
-import Header from "../Header/Header";
 import SideBar from "./SideBar";
 import './Admin.scss';
 import { FaBars } from 'react-icons/fa';
@@ -16,7 +15,6 @@ const Admin = (props) => {
             <div className="admin-content">
                 <div className="admin-header">
                     <FaBars onClick={() => setCollapsed(!collapsed)} />Admin content
-
                 </div>
                 <div className="admin-main">
                     <Outlet />
