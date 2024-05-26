@@ -2,12 +2,15 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { useDispatch } from 'react-redux';
 
 import { postLogin } from '../services/apiService';
 import './Login.scss'
+import { doLogin } from '../../redux/action/userAction';
 
 const Login = (props) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -22,8 +25,9 @@ const Login = (props) => {
 
         //call api
         let res = await postLogin(email, password);
-        console.log(">>>>>>>>>>>>>>>>> Check LOGIN: ", res);
+        // console.log(">>>>>>>>>>>>>>>>> Check LOGIN: ", res);
         if (res && res.EC === 0) {
+            dispatch(doLogin({ data: res }));
             toast.success(res.EM);
             navigate('/');
         } else {
