@@ -1,4 +1,4 @@
-import { FETCH_USER_LOGIN_SUCCESS } from "../action/userAction";
+import { FETCH_USER_LOGIN_SUCCESS, FETCH_USER_REGIST_SUCCESS } from "../action/userAction";
 
 const INITIAL_STATE = {
     account: {
@@ -9,7 +9,8 @@ const INITIAL_STATE = {
         image: '',
         role: ''
     },
-    isAuthenticated: false
+    isAuthenticated: false,
+    loginEmail: ''
 };
 const userReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
@@ -27,6 +28,14 @@ const userReducer = (state = INITIAL_STATE, action) => {
                     role: userInfo?.role
                 },
                 isAuthenticated: true
+            };
+
+        case FETCH_USER_REGIST_SUCCESS:
+            console.log(">>>>>>>CHECK ACTION", action);
+            var email = action?.payload?.data;
+            return {
+                ...state,
+                loginEmail: email,
             };
         default: return state;
     }

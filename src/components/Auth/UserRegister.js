@@ -4,9 +4,13 @@ import { toast } from 'react-toastify';
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import './UserRegister.scss';
 import { postUserRegister } from '../services/apiService';
+import { useDispatch } from 'react-redux';
+import { doRegist } from '../../redux/action/userAction';
 
 const UserRegister = (props) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const [isShowPassword, setIsShowPassword] = useState(false);
     const [isShowConfPassword, setIsShowConfPassword] = useState(false);
     const [username, setUsername] = useState("");
@@ -46,6 +50,7 @@ const UserRegister = (props) => {
         let res = await postUserRegister(username, email, password);
         console.log(">>>>>>>>>>>>CHECK REGIST RESPOND: ", res);
         if (res.EC === 0) {
+            dispatch(doRegist({ data: email }));
             toast.success(res.EM);
             navigate('/login');
         } else {

@@ -1,7 +1,16 @@
 export const FETCH_USER_LOGIN_SUCCESS = 'FETCH_USER_LOGIN_SUCCESS';
+export const FETCH_USER_REGIST_SUCCESS = 'FETCH_USER_REGIST_SUCCESS';
+
 export const doLogin = (data) => {
     return {
         type: FETCH_USER_LOGIN_SUCCESS,
+        payload: data
+    }
+}
+
+export const doRegist = (data) => {
+    return {
+        type: FETCH_USER_REGIST_SUCCESS,
         payload: data
     }
 }

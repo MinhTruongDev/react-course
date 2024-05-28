@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import _ from 'lodash';
 
 import { postLogin } from '../services/apiService';
 import './Login.scss'
@@ -12,7 +13,10 @@ const Login = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const [email, setEmail] = useState("");
+    const loginEmail = useSelector(state => state.loginUser.loginEmail);
+    console.log(">>>>>>>LOGIN EMAIL: ", loginEmail);
+
+    const [email, setEmail] = useState(loginEmail ?? "");
     const [password, setPassword] = useState("");
     const [isShowPassword, setIsShowPassword] = useState(false);
 
