@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { ImSpinner } from "react-icons/im";
 import { useDispatch, useSelector } from 'react-redux';
-import _ from 'lodash';
 
 import { postLogin } from '../services/apiService';
 import './Login.scss'
@@ -19,6 +19,7 @@ const Login = (props) => {
     const [email, setEmail] = useState(loginEmail ?? "");
     const [password, setPassword] = useState("");
     const [isShowPassword, setIsShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleTogglePasword = () => {
         setIsShowPassword(!isShowPassword);
@@ -26,18 +27,38 @@ const Login = (props) => {
 
     const handleLogin = async () => {
         // validate
+        if (!email || !validateEmail(email)) {
+            toast.error('Invalid email');
+            return;
+        }
 
+        if (!password) {
+            toast.error('Invalid password!');
+            return;
+        }
+
+        setIsLoading(true);
         //call api
         let res = await postLogin(email, password);
-        // console.log(">>>>>>>>>>>>>>>>> Check LOGIN: ", res);
+
         if (res && res.EC === 0) {
             dispatch(doLogin({ data: res }));
             toast.success(res.EM);
+            setIsLoading(false);
             navigate('/');
         } else {
             toast.error(res.EM);
+            setIsLoading(false);
         }
     }
+
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
 
     const handleRegister = () => {
         navigate('/register');
@@ -91,8 +112,10 @@ const Login = (props) => {
                     <button
                         className='btn-submit'
                         onClick={() => handleLogin()}
+                        disabled={isLoading}
                     >
-                        Login to MinhTruongDev
+                        {isLoading && <ImSpinner className='loader-icon' />}
+                        <span>Login to MinhTruongDev</span>
                     </button>
                 </div>
                 <div className='text-center'>

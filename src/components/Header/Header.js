@@ -6,7 +6,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { NavDropdown } from 'react-bootstrap';
 const Header = () => {
     const isAuthenticated = useSelector(state => state.loginUser.isAuthenticated);
-    const account = useSelector(state => state.loginUser.account);
 
     const navigate = useNavigate();
 
