@@ -29,6 +29,10 @@ const ListQuiz = (props) => {
                     );
                 })
             }
+            {arrayQuiz && arrayQuiz.length === 0 &&
+                <div> You don't have any quiz now... </div>
+            }
+
         </div>
     )
 }
