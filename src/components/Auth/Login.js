@@ -14,7 +14,7 @@ const Login = (props) => {
     const dispatch = useDispatch();
 
     const loginEmail = useSelector(state => state.loginUser.loginEmail);
-    console.log(">>>>>>>LOGIN EMAIL: ", loginEmail);
+    // console.log(">>>>>>>LOGIN EMAIL: ", loginEmail);
 
     const [email, setEmail] = useState(loginEmail ?? "");
     const [password, setPassword] = useState("");
@@ -42,7 +42,7 @@ const Login = (props) => {
         let res = await postLogin(email, password);
 
         if (res && res.EC === 0) {
-            dispatch(doLogin({ data: res }));
+            dispatch(doLogin({ data: res.DT }));
             toast.success(res.EM);
             setIsLoading(false);
             navigate('/');
